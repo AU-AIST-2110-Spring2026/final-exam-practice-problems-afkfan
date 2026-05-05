@@ -23,6 +23,20 @@ def get_routes(location:str) -> list[str]:
     #
     # Return the list of accessible route directions.
 
+    routes_list = []
+
+    if location not in stations:
+        return routes_list
+
+    routes = stations[location]["routes"]
+
+    for direction in routes:
+        station = routes[direction]
+        if stations[station]["open_with"] == "":
+            routes_list.append(direction)
+
+    return routes_list
+
 
 
 

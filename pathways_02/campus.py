@@ -24,7 +24,20 @@ def get_directions(location: str) -> list[str]:
     #
     # Example:
     # If location is "Library", this function should return ["n", "e"].
+    
+    directions = []
 
+    if location not in campus:
+        return directions
+
+    pathways = campus[location]["pathways"]
+
+    for direction in pathways:
+        building = pathways[direction]
+        if campus[building]["open_with"] == "":
+            directions.append(direction)
+
+    return directions
 
 
 
